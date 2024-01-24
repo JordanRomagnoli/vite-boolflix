@@ -9,21 +9,21 @@
             }
         },
         props: {
-            FilmObj: Object,
+            TvObj: Object,
             imageBackground: String,
         },
         methods:{
             formattFlag(){
-                this.FilmObj.original_language = this.FilmObj.original_language.toUpperCase();
+                this.TvObj.original_language = this.TvObj.original_language.toUpperCase();
 
-                if(this.FilmObj.original_language == 'EN'){
-                    this.FilmObj.original_language = 'GB'
+                if(this.TvObj.original_language == 'EN'){
+                    this.TvObj.original_language = 'GB'
                 }
-                else if(this.FilmObj.original_language == 'JA'){
-                    this.FilmObj.original_language = 'JP'
+                else if(this.TvObj.original_language == 'JA'){
+                    this.TvObj.original_language = 'JP'
                 }
-                else if(this.FilmObj.original_language == 'KO'){
-                    this.FilmObj.original_language = 'KR'
+                else if(this.TvObj.original_language == 'KO'){
+                    this.TvObj.original_language = 'KR'
                 }
             },
             roundedRating(x){
@@ -46,26 +46,26 @@
 
 <template>
    <div class="movie-card">
-        <img v-if="FilmObj.poster_path !== null" :src="imageBackground" alt="">
+        <img v-if="TvObj.poster_path !== null" :src="imageBackground" alt="">
         <div v-else class="w-100 h-100 bg-danger d-flex justify-content-center align-items-center">
             <h3>Unknow</h3>
         </div>
         <div class="info">
-            <h4>{{ FilmObj.title }}</h4>
-            <span>{{ FilmObj.original_title }}</span>
+            <h4>{{ TvObj.name }}</h4>
+            <span>{{ TvObj.original_name }}</span>
 
             <div>
-                <img :src="'https://flagsapi.com/'+ FilmObj.original_language +'/flat/64.png'" alt="">
+                <img :src="'https://flagsapi.com/'+ TvObj.original_language +'/flat/64.png'" alt="">
             </div>
 
             <div class="w-100">
                 <i v-for="(elem, i) in 5" class="fa-star" :class="{
-                    'fa-regular': roundedRating(FilmObj.vote_average) <= i,
-                    'fa-solid': roundedRating(FilmObj.vote_average) > i,
+                    'fa-regular': roundedRating(TvObj.vote_average) <= i,
+                    'fa-solid': roundedRating(TvObj.vote_average) > i,
 
                 }"></i>
             </div>
-            <!--roundedRating(FilmObj.vote_average)-->
+            
         </div>
    </div>
 </template>

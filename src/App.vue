@@ -39,18 +39,18 @@ export default {
 
             });
 
-            Axios.get(this.store.baseUrlSearchMovie, {
+            Axios.get(this.store.baseUrlSearchTvSearies, {
                 params: {
                     query: this.store.searchInput.length > 0 ? this.store.searchInput : null,
                 }
             })
-            .then((res)=> {
-                console.log('serie tv', res);
+            .then((response)=> {
+                console.log('serie tv', response);
 
                 this.store.TvList = [];
 
-                for(let i = 0; i < res.data.results.length; i++){
-                    this.store.TvList.push(res.data.results[i])
+                for(let j = 0; j < response.data.results.length; j++){
+                    this.store.TvList.push(response.data.results[j])
                 };
 
                 console.log('serie tv', this.store.TvList);
