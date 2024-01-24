@@ -11,7 +11,7 @@
     </script>
 
 <template>
-   <div class="row p-4 justify-content-between">
+   <div class="row p-4 justify-content-between g-0">
         <div class="text-white d-flex justify-content-center align-items-center logo-frame">
             <img src="../assets/img/Logonetflix.png" alt="Netflix_logo">
         </div>
