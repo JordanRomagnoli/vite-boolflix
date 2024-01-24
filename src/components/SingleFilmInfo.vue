@@ -7,17 +7,18 @@
                 store
             }
         },
+        props: {
+            
+        }
     }
     </script>
 
 <template>
-   <div class="card">
-
-   </div>
+   <h1>
+    
+   </h1>
 </template>
 
 <style lang="scss" scoped>
-    .card{
-        width: calc(100% / 5);
-    }
+   
 </style>

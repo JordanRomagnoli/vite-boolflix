@@ -1,5 +1,5 @@
 <script>
-    import SingleMedia from './SingleMedia.vue';
+    import SingleFilm from './SingleFilm.vue';
     import { store } from '../store';
 
     export default {
@@ -10,17 +10,20 @@
         },
         components: {
 
-            SingleMedia
+            SingleFilm
         }
     }
     </script>
 
 <template>
-    <div class="row justify-content-between flex-wrap">
-
-        <SingleMedia/>
-        
+    <div class=" container-lg pt-5">
+        <div class="row justify-content-between flex-wrap">
+            <SingleFilm v-for="(elem, i) in this.store.filmsList"
+            :FilmObj="elem"
+            :imageBackground="'https://image.tmdb.org/t/p/w780'+elem.backdrop_path"/>
+        </div>
     </div>
+    
 </template>
 
 <style lang="scss" scoped>
