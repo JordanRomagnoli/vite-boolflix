@@ -1,21 +1,28 @@
 <script>
+    import SingleMedia from './SingleMedia.vue';
+    import { store } from '../store';
+
     export default {
         data() {
             return { 
-                title: 'Questo è il main' 
+                store
             }
         },
+        components: {
+
+            SingleMedia
+        }
     }
     </script>
 
 <template>
-    <main class="main-title">
-        <h1>
-            {{ title }}
-        </h1>
-    </main>
+    <div class="row justify-content-between flex-wrap">
+
+        <SingleMedia/>
+        
+    </div>
 </template>
 
 <style lang="scss" scoped>
-    
+    @import '../assets/scss/main.scss';
 </style>

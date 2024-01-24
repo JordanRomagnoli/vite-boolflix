@@ -1,0 +1,21 @@
+@use './partials/mixins' as *;
+@use './partials/variables' as *;
+
+.row{
+    background-color: rgb(31, 31, 31);
+    .logo-frame{
+        width: 180px;
+        img{
+            width: 100%;
+        }
+    }
+    form{
+        div{
+            margin-right: 20px;
+        }
+        button{
+            background-color: red;
+            border-color: rgb(185, 54, 54);
+        }
+    }
+}

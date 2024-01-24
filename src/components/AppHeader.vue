@@ -1,28 +1,43 @@
 <script>
+    import { store } from '../store';
+
     export default {
         data() {
             return { 
-                title: 'Ciao ragazzi' 
+                store
             }
         },
     }
     </script>
 
 <template>
-    <header class="main-title">
-        <h1>
-            <p>
-                {{ title }}
-            </p>
-        </h1>
-    </header>
+   <div class="row p-4 justify-content-between">
+        <div class="text-white d-flex justify-content-center align-items-center logo-frame">
+            <img src="../assets/img/Logonetflix.png" alt="Netflix_logo">
+        </div>
+
+        <form class="col-2 d-flex justify-content-center align-items-center" @submit.prevent="$emit('userSearch')">
+            
+               
+            <div class=" w-75">
+                <input
+                v-model="store.searchInput"
+                type="text"
+                class="form-control"
+                placeholder="Search character"
+                aria-label="Search character">
+            </div>
+            
+            
+            <button type="submit" class="btn btn-primary">
+                Cerca
+            </button>
+            
+            
+        </form>
+   </div>
 </template>
 
 <style lang="scss" scoped>
-    h1{
-        p{
-            color: red;
-            text-align: center;
-        }
-    }
+    @import '../assets/scss/header.scss';
 </style>
