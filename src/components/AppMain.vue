@@ -1,6 +1,5 @@
 <script>
     import SingleFilm from './SingleFilm.vue';
-    import SingleTv from './SingleTv.vue';
     import { store } from '../store';
 
     export default {
@@ -12,7 +11,6 @@
         components: {
 
             SingleFilm,
-            SingleTv,
         }
     }
     </script>
@@ -23,12 +21,16 @@
             <SingleFilm v-for="(elem, i) in this.store.filmsList"
             :key="i"
             :FilmObj="elem"
-            :imageBackground="'https://image.tmdb.org/t/p/w780'+elem.poster_path"/>
+            :imageBackground="'https://image.tmdb.org/t/p/w780'+elem.poster_path"
+            :MediaName="elem.title"
+            :OriginalMediaName="elem.original_title"/>
 
-            <SingleTv v-for="(element, index) in this.store.TvList"
-            :key="index"
-            :TvObj="element"
-            :imageBackground="'https://image.tmdb.org/t/p/w780'+element.poster_path"/>
+            <SingleFilm v-for="(elem, i) in this.store.TvList"
+            :key="i"
+            :FilmObj="elem"
+            :imageBackground="'https://image.tmdb.org/t/p/w780'+elem.poster_path"
+            :MediaName="elem.name"
+            :OriginalMediaName="elem.original_name"/>
         </div>
     </div>
     

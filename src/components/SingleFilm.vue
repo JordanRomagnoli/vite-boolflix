@@ -11,6 +11,8 @@
         props: {
             FilmObj: Object,
             imageBackground: String,
+            MediaName: String,
+            OriginalMediaName: String,
         },
         methods:{
             formattFlag(){
@@ -51,8 +53,8 @@
             <h3>Unknow</h3>
         </div>
         <div class="info">
-            <h4>{{ FilmObj.title }}</h4>
-            <span>{{ FilmObj.original_title }}</span>
+            <h5>{{ MediaName }}</h5>
+            <span>{{ OriginalMediaName }}</span>
 
             <div>
                 <img :src="'https://flagsapi.com/'+ FilmObj.original_language +'/flat/64.png'" alt="">
@@ -62,10 +64,13 @@
                 <i v-for="(elem, i) in 5" class="fa-star" :class="{
                     'fa-regular': roundedRating(FilmObj.vote_average) <= i,
                     'fa-solid': roundedRating(FilmObj.vote_average) > i,
-
                 }"></i>
             </div>
-            <!--roundedRating(FilmObj.vote_average)-->
+
+            <p>
+                {{ FilmObj.overview }}
+            </p>
+            
         </div>
    </div>
 </template>
@@ -75,7 +80,7 @@
         width: calc(100% / 5);
         margin: 20px 10px;
         height: 380px;
-        border: 0.4px solid white;
+        border: 0.4px solid rgb(133, 0, 0);
         padding: 0;
         border-radius: 8px;
         overflow: hidden;
@@ -94,14 +99,15 @@
             padding: 10px;
             width: 100%;
             height: 100%;
-            padding-top: 120px;
+            padding-top: 10px;
             position: absolute;
             bottom: 0;
             color: white;
             background: rgb(0,6,70);
-            background: linear-gradient(0deg, rgba(0,6,70,1) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.7) 100%); 
+            background: linear-gradient(0deg, rgb(70, 0, 0) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.7) 100%); 
             text-align: center;
             filter: opacity(0);
+            transition: all .2s ease-in-out;
             &:hover{
                 filter: opacity(1);
             }
@@ -115,6 +121,9 @@
                     width: 100%;
                 }
 
+            }
+            >p{
+                font-size: 0.8em;
             }
 
         }
