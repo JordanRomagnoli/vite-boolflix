@@ -21,6 +21,13 @@ export default {
     methods: {
 
         getResponse(){
+            if(this.store.searchInput.length <= 0){
+                this.store.flag = false;
+            }else{
+
+                this.store.flag = true;
+            }
+
             Axios.get(this.store.baseUrlSearchMovie, {
                 params: {
                     query: this.store.searchInput.length > 0 ? this.store.searchInput : null,
@@ -34,8 +41,6 @@ export default {
                 for(let i = 0; i < res.data.results.length; i++){
                     this.store.filmsList.push(res.data.results[i])
                 };
-
-                console.log('film', this.store.filmsList);
 
             });
 
@@ -53,15 +58,20 @@ export default {
                     this.store.TvList.push(response.data.results[j])
                 };
 
-                console.log('serie tv', this.store.TvList);
-
             });
         },
 
     },
     created(){
-        
-    }
+        Axios.get(this.store.baseUrlCreate)
+        .then((res)=>{
+            for(let i = 0; i < 3; i++){
+                this.store.trendList.push(res.data.results[i])
+            };
+            console.log(this.store.trendList)
+
+        })
+    },
 }
 </script>
 

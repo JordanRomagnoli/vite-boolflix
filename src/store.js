@@ -6,5 +6,7 @@ export const store = reactive({
     baseUrlSearchTvSearies:'https://api.themoviedb.org/3/search/tv?api_key=8b1143c0f645e9868946688f9cb05dfe',
     searchInput: '',
     filmsList: [],
+    trendList: [],
     TvList: [],
+    flag: false,
 });

@@ -1,5 +1,6 @@
 <script>
     import SingleFilm from './SingleFilm.vue';
+    import SingleTrendFilm from './SingleTrendFilm.vue';
     import { store } from '../store';
 
     export default {
@@ -11,13 +12,24 @@
         components: {
 
             SingleFilm,
+            SingleTrendFilm
         }
     }
     </script>
 
 <template>
-    <div class=" container-lg pt-5">
-        <div class="row justify-content-center  flex-wrap">
+    <div class=" container pt-5">
+
+        <div v-if="this.store.flag == false" class="row justify-content-center  flex-wrap">
+            <SingleTrendFilm v-for="(elem, i) in this.store.trendList"
+            :key="i"
+            :SingleObject="elem"
+            :imageBackground="'https://image.tmdb.org/t/p/w780'+elem.poster_path"
+            />
+        </div>
+
+        <div v-else class="row justify-content-center  flex-wrap">
+
             <SingleFilm v-for="(elem, i) in this.store.filmsList"
             :key="i"
             :FilmObj="elem"
