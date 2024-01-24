@@ -17,10 +17,10 @@
 
 <template>
     <div class=" container-lg pt-5">
-        <div class="row justify-content-between flex-wrap">
+        <div class="row justify-content-center  flex-wrap">
             <SingleFilm v-for="(elem, i) in this.store.filmsList"
             :FilmObj="elem"
-            :imageBackground="'https://image.tmdb.org/t/p/w780'+elem.backdrop_path"/>
+            :imageBackground="'https://image.tmdb.org/t/p/w780'+elem.poster_path"/>
         </div>
     </div>
     
