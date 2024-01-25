@@ -60,12 +60,11 @@ export default {
 
             });
         },
-
     },
     created(){
         Axios.get(this.store.baseUrlCreate)
         .then((res)=>{
-            for(let i = 0; i < 3; i++){
+            for(let i = 0; i < 4; i++){
                 this.store.trendList.push(res.data.results[i])
             };
             console.log(this.store.trendList)

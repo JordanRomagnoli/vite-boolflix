@@ -13,7 +13,7 @@
             imageBackground: String,
         },
         methods:{
-
+            
         },
         mounted(){
             
@@ -37,12 +37,12 @@
 
 <style lang="scss" scoped>
     .movie-card{
-        width: calc(100% / 4);
+        width: calc(100% / 5);
         margin: 20px 10px;
         height: 500px;
         border: 0.4px solid rgb(133, 0, 0);
         padding: 0;
-        border-radius: 8px;
+        
         overflow: hidden;
         background-color: white;
         position: relative;

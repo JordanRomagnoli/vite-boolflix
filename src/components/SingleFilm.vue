@@ -1,11 +1,14 @@
 <script>
+    import Axios from 'axios';
     import { store } from '../store';
 
     export default {
         data() {
             return { 
                 
-                store
+                store,
+                cast: [],
+                castFlag: false,
             }
         },
         props: {
@@ -13,6 +16,7 @@
             imageBackground: String,
             MediaName: String,
             OriginalMediaName: String,
+            media: String,
         },
         methods:{
             formattFlag(){
@@ -33,7 +37,18 @@
                 x = x / 2;
                 x = Math.ceil(x);
                 return x;
-            }
+            },
+            getCredit(elementId){
+                this.castFlag = !this.castFlag
+                this.cast = [];
+            Axios.get('https://api.themoviedb.org/3/'+ this.media +'/'+ elementId +'/credits?api_key=8b1143c0f645e9868946688f9cb05dfe')
+            .then((res)=> {
+                for(let i = 0; i < 5; i++){
+                    this.cast.push(res.data.cast[i])
+                }
+                console.log(this.cast)
+            })
+        }
         },
         mounted(){
             this.formattFlag();
@@ -47,7 +62,8 @@
     </script>
 
 <template>
-   <div class="movie-card">
+   <div class="movie-card"
+   @click="getCredit(FilmObj.id)">
         <img v-if="FilmObj.poster_path !== null" :src="imageBackground" alt="">
         <div v-else class="w-100 h-100 bg-danger d-flex justify-content-center align-items-center">
             <h3>Unknow</h3>
@@ -72,11 +88,22 @@
             </p>
             
         </div>
+
+        <div v-if="castFlag == true" class="info-cast mb-0">
+            <h4>Cast</h4>
+            <div v-for="(elem, i) in cast">
+                <span>{{ elem.name }}</span>
+            </div>
+        </div>
    </div>
+
+   
+   
 </template>
 
 <style lang="scss" scoped>
     .movie-card{
+        cursor: pointer;
         width: calc(100% / 5);
         margin: 20px 10px;
         height: 380px;
@@ -124,8 +151,38 @@
             }
             >p{
                 font-size: 0.8em;
+                height: 45%;
+                overflow: auto;
+            }
+            
+            ::-webkit-scrollbar {
+                width: 10px;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background-color: #805454;
+            }
+
+            ::-webkit-scrollbar-track {
+                background-color: #412d2d;
             }
 
         }
+
+        > .info-cast{
+        position: absolute;
+        bottom: 0;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background-color: rgba(30, 30, 30, 0.8);
+        color: white;
+        span{
+            margin: 5px 0;
+        }
     }
+    }
+
+    
 </style>
