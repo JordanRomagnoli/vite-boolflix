@@ -8,6 +8,7 @@
                 
                 store,
                 cast: [],
+                genre: [],
                 castFlag: false,
             }
         },
@@ -40,15 +41,22 @@
             },
             getCredit(elementId){
                 this.castFlag = !this.castFlag
-                this.cast = [];
-            Axios.get('https://api.themoviedb.org/3/'+ this.media +'/'+ elementId +'/credits?api_key=8b1143c0f645e9868946688f9cb05dfe')
-            .then((res)=> {
-                for(let i = 0; i < 5; i++){
-                    this.cast.push(res.data.cast[i])
-                }
-                console.log(this.cast)
-            })
-        }
+                
+                Axios.get('https://api.themoviedb.org/3/'+ this.media +'/'+ elementId +'/credits?api_key=8b1143c0f645e9868946688f9cb05dfe')
+                .then((res)=> {
+                    
+                    for(let i = 0; i < 4; i++){
+
+                        this.cast.push(res.data.cast[i]);
+                    }
+                });
+
+                Axios.get('https://api.themoviedb.org/3/'+ this.media +'/'+ elementId +'?api_key=8b1143c0f645e9868946688f9cb05dfe')
+                .then((res)=>{
+                    
+                    this.genre = res.data.genres
+                });
+            },
         },
         mounted(){
             this.formattFlag();
@@ -92,7 +100,23 @@
         <div v-if="castFlag == true" class="info-cast mb-0">
             <h4>Cast</h4>
             <div v-for="(elem, i) in cast">
-                <span>{{ elem.name }}</span>
+                <span v-if="this.cast.length > 0">
+                    {{ elem.name }}
+                </span>
+                <span v-else>
+                    unknow
+                </span>
+            </div>
+            <div class="mt-3">
+                <h4>Genres</h4>
+                <div v-for="(elem, i) in genre">
+                    <span v-if="this.genre.length > 0">
+                        {{ elem.name }}
+                    </span>
+                    <span v-else>
+                        unknow
+                    </span>
+                </div>
             </div>
         </div>
    </div>
