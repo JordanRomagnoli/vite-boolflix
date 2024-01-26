@@ -51,7 +51,7 @@
     </script>
 
 <template>
-    <div class="container pt-5 position-relative">
+    <div class="container-xxl pt-5 position-relative">
         
         <div class="row">
                 <div class="col-12 text-white d-flex justify-content-end position-relative">

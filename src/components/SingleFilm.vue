@@ -130,12 +130,12 @@
 </template>
 
 <style lang="scss" scoped>
+@use "../assets/scss/partials/variables" as *;
     .movie-card{
         cursor: pointer;
         width: calc(100% / 5);
         margin: 20px 10px;
         height: 380px;
-        border: 0.4px solid rgb(133, 0, 0);
         padding: 0;
         border-radius: 8px;
         overflow: hidden;
@@ -162,6 +162,7 @@
             background: linear-gradient(0deg, rgb(70, 0, 0) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.7) 100%); 
             text-align: center;
             filter: opacity(0);
+            backdrop-filter: blur( 3.5px );
             transition: all .2s ease-in-out;
             &:hover{
                 filter: opacity(1);
@@ -180,6 +181,7 @@
             >p{
                 font-size: 0.8em;
                 height: 45%;
+                margin-top: 8px;
                 overflow: auto;
             }
             

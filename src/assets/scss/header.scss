@@ -2,9 +2,9 @@
 @use './partials/variables' as *;
 
 .row{
-    background-color: rgb(31, 31, 31);
+    border-bottom: 1px solid rgb(54, 54, 54);
     .logo-frame{
-        width: 180px;
+        width: 120px;
         img{
             width: 100%;
         }

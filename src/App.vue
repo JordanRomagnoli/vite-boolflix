@@ -84,9 +84,10 @@ export default {
 </template>
 
 <style lang="scss">
+    @use "../src/assets/scss/partials/variables" as *;
     @import "bootstrap/scss/bootstrap";
 
     body{
-        background-color: black;
+        background-color: $baseColor;
     }
 </style>
