@@ -34,7 +34,6 @@ export default {
                 }
             })
             .then((res)=> {
-                console.log('film', res);
 
                 this.store.filmsList = [];
                 
@@ -50,7 +49,6 @@ export default {
                 }
             })
             .then((response)=> {
-                console.log('serie tv', response);
 
                 this.store.TvList = [];
 
@@ -68,8 +66,6 @@ export default {
             for(let i = 0; i < 4; i++){
                 this.store.trendList.push(res.data.results[i])
             };
-            console.log(this.store.trendList)
-
         })
     },
 }

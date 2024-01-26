@@ -8,5 +8,7 @@ export const store = reactive({
     filmsList: [],
     trendList: [],
     TvList: [],
+    MenuList:[],
+    genreActive: [],
     flag: false,
 });

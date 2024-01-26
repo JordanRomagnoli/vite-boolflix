@@ -39,12 +39,10 @@
                 x = Math.ceil(x);
                 return x;
             },
-            getCredit(elementId){
-                this.castFlag = !this.castFlag
+            getCredit(elementId){        
                 
                 Axios.get('https://api.themoviedb.org/3/'+ this.media +'/'+ elementId +'/credits?api_key=8b1143c0f645e9868946688f9cb05dfe')
                 .then((res)=> {
-                    
                     for(let i = 0; i < 4; i++){
 
                         this.cast.push(res.data.cast[i]);
@@ -55,11 +53,19 @@
                 .then((res)=>{
                     
                     this.genre = res.data.genres
+
+                }).catch((error) => {
+                console.error('Error', error);
                 });
+            },
+
+            castFlagSwitch(){
+                this.castFlag = !this.castFlag
             },
         },
         mounted(){
             this.formattFlag();
+            this.getCredit(this.FilmObj.id);
         },
         updated(){
             this.formattFlag();
@@ -70,8 +76,9 @@
     </script>
 
 <template>
-   <div class="movie-card"
-   @click="getCredit(FilmObj.id)">
+    <div class="movie-card"
+    v-if="genre.some(elem => this.store.genreActive.includes(elem.name)) || this.store.genreActive.length == 0"
+    @click="castFlagSwitch()">
         <img v-if="FilmObj.poster_path !== null" :src="imageBackground" alt="">
         <div v-else class="w-100 h-100 bg-danger d-flex justify-content-center align-items-center">
             <h3>Unknow</h3>
@@ -100,11 +107,8 @@
         <div v-if="castFlag == true" class="info-cast mb-0">
             <h4>Cast</h4>
             <div v-for="(elem, i) in cast">
-                <span v-if="this.cast.length > 0">
+                <span>
                     {{ elem.name }}
-                </span>
-                <span v-else>
-                    unknow
                 </span>
             </div>
             <div class="mt-3">

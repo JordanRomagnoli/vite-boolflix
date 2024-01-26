@@ -17,8 +17,6 @@
         </div>
 
         <form class="col-2 d-flex justify-content-center align-items-center" @submit.prevent="$emit('userSearch')">
-            
-               
             <div class=" w-75">
                 <input
                 v-model="store.searchInput"
