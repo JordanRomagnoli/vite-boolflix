@@ -207,6 +207,7 @@
         height: 100%;
         z-index: 1;
         background-color: rgba(30, 30, 30, 0.8);
+        backdrop-filter: blur( 3.5px );
         color: white;
         span{
             margin: 5px 0;

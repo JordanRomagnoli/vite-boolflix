@@ -65,7 +65,7 @@
 <template>
     <div class="container-xxl pt-5 position-relative">
         
-        <div class="row">
+        <div class="row" v-if="this.store.flag == true">
                 <div class="col-12 text-white d-flex justify-content-end position-relative">
                     <button @click="switchFlag()">Filter</button>
                     <ul class="menu-genre" v-if="menuFlag == true">
